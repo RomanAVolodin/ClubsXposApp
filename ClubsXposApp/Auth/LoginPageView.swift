@@ -8,12 +8,7 @@
 import SwiftUI
 
 struct LoginPageView: View {
-    
-    init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [
-            .foregroundColor: UIColor.lightText
-        ]
-    }
+    @Binding var signInSuccess: Bool
     
     @State private var login: String = ""
     @State private var password: String = ""
@@ -77,31 +72,17 @@ struct LoginPageView: View {
                     
                     }
                     
-                    if vm.isLoading {
-                        VStack {
-                            ActivityIndicatorView()
-                            Text("Loading...")
-                                .foregroundColor(.white)
-                                .font(.system(size: 14, weight: .semibold))
-                        }
-                        .padding()
-                        .background(Color.black)
-                        .cornerRadius(8)
-                    }
-                    
-                    if !vm.errorMessage.isEmpty {
-                        VStack {
-                            Image(systemName: "xmark.octagon")
-                                .font(.system(size: 64, weight: .semibold))
-                                .foregroundColor(.red)
-                                .padding()
-                            Text(vm.errorMessage)
-                        }
-                    }
-                    
                 }
                 .padding(.top, 32)
                 .padding(.horizontal, 24)
+                
+                if vm.isLoading {
+                    ActivityIndicatorFullscreenView()
+                }
+                
+                if !vm.errorMessage.isEmpty {
+                    NetworkErrorFullscreenView(errorMessage: vm.errorMessage)        
+                }
                 
                 if isSettingsShown {
                     SettingsView() {
@@ -114,18 +95,19 @@ struct LoginPageView: View {
     }
     
     private func logInToSystem() {
-        print("fetching start")
-        vm.login() {
-            print("fetching comlete")
+        vm.login(username: login, password: password, hardwareId: UserDetails.hardwareID()) {
+            if UserDetails.currentUser() != nil {
+                signInSuccess = true
+            }
         }
-        
     }
-    
 }
 
 
 struct LoginPageView_Previews: PreviewProvider {
+    @State var signInSuccess = false
+    
     static var previews: some View {
-        LoginPageView()
+        AppContentView()
     }
 }

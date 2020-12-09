@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct UserDetails: Identifiable, Decodable {
+struct UserDetails: Identifiable, Codable {
+    
     let id: Int
     let username, dolzhnost_name, hardware_name: String
     let safe_actions: [SafeAction]
@@ -20,9 +21,21 @@ struct UserDetails: Identifiable, Decodable {
         }
         return false
     }
+    
+    static func currentUser() -> UserDetails? {
+        return try? UserDefaults.standard.getObject(forKey: "currentUser", castTo: UserDetails.self)
+    }
+    
+    static func clearCurrentUser() -> Void {
+        UserDefaults.standard.set(nil, forKey: "currentUser")
+    }
+    
+    static func hardwareID() -> String {
+        return UserDefaults.standard.string(forKey: "hardwareID") ?? ""
+    }
 }
 
-struct SafeAction: Decodable {
+struct SafeAction: Codable {
     let id: Int
     let name: String
 }

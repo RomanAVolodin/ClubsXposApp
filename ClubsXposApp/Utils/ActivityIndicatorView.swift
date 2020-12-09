@@ -7,6 +7,33 @@
 
 import SwiftUI
 
+struct ActivityIndicatorFullscreenView: View {
+    var body: some View {
+        ZStack(alignment: .topLeading) {
+            Color(.init(white: 0.8, alpha: 0.6))
+                .ignoresSafeArea()
+            VStack(alignment: .center) {
+                Spacer()
+                HStack(alignment: .center) {
+                    Spacer()
+                    VStack {
+                        ActivityIndicatorView()
+                        Text("Загрузка...")
+                            .foregroundColor(.white)
+                            .font(.system(size: 14, weight: .semibold))
+                    }
+                    .padding()
+                    .background(Color.black)
+                    .cornerRadius(8)
+                    Spacer()
+                }
+                Spacer()
+            }
+    
+        }
+    }
+}
+
 struct ActivityIndicatorView: UIViewRepresentable {
     func makeUIView(context: Context) -> UIActivityIndicatorView {
         let aiv = UIActivityIndicatorView(style: .large)
@@ -24,6 +51,6 @@ struct ActivityIndicatorView: UIViewRepresentable {
 
 struct ActivityIndicatorView_Previews: PreviewProvider {
     static var previews: some View {
-        ActivityIndicatorView()
+        ActivityIndicatorFullscreenView()
     }
 }
