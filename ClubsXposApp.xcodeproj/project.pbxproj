@@ -7,19 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		301129B62580077D00AA14CF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301129B52580077D00AA14CF /* CustomTextField.swift */; };
+		301129BB2580B13D00AA14CF /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301129BA2580B13D00AA14CF /* ActivityIndicatorView.swift */; };
+		301129C02580B1D300AA14CF /* UserDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301129BF2580B1D300AA14CF /* UserDetailsViewModel.swift */; };
+		301129C42580B20A00AA14CF /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301129C32580B20A00AA14CF /* UserDetails.swift */; };
+		301129CA2580BC8600AA14CF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301129C92580BC8600AA14CF /* SettingsView.swift */; };
 		30166D78257FEDF80096D9A0 /* ClubsXposAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30166D77257FEDF80096D9A0 /* ClubsXposAppApp.swift */; };
-		30166D7A257FEDF80096D9A0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30166D79257FEDF80096D9A0 /* ContentView.swift */; };
 		30166D7C257FEDFC0096D9A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30166D7B257FEDFC0096D9A0 /* Assets.xcassets */; };
 		30166D7F257FEDFC0096D9A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30166D7E257FEDFC0096D9A0 /* Preview Assets.xcassets */; };
+		30166D8A257FEF6D0096D9A0 /* LoginPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30166D89257FEF6D0096D9A0 /* LoginPageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		301129B52580077D00AA14CF /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		301129BA2580B13D00AA14CF /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		301129BF2580B1D300AA14CF /* UserDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewModel.swift; sourceTree = "<group>"; };
+		301129C32580B20A00AA14CF /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
+		301129C92580BC8600AA14CF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		30166D74257FEDF80096D9A0 /* ClubsXposApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClubsXposApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30166D77257FEDF80096D9A0 /* ClubsXposAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubsXposAppApp.swift; sourceTree = "<group>"; };
-		30166D79257FEDF80096D9A0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		30166D7B257FEDFC0096D9A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30166D7E257FEDFC0096D9A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		30166D80257FEDFC0096D9A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30166D89257FEF6D0096D9A0 /* LoginPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +43,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		301129B42580075200AA14CF /* SharedComponents */ = {
+			isa = PBXGroup;
+			children = (
+				301129B52580077D00AA14CF /* CustomTextField.swift */,
+			);
+			path = SharedComponents;
+			sourceTree = "<group>";
+		};
+		301129B92580B12500AA14CF /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				301129BA2580B13D00AA14CF /* ActivityIndicatorView.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		301129BE2580B1AC00AA14CF /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				30166D89257FEF6D0096D9A0 /* LoginPageView.swift */,
+				301129BF2580B1D300AA14CF /* UserDetailsViewModel.swift */,
+				301129C92580BC8600AA14CF /* SettingsView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		301129C62580B21000AA14CF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				301129C32580B20A00AA14CF /* UserDetails.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		30166D6B257FEDF70096D9A0 = {
 			isa = PBXGroup;
 			children = (
@@ -52,8 +96,11 @@
 		30166D76257FEDF80096D9A0 /* ClubsXposApp */ = {
 			isa = PBXGroup;
 			children = (
+				301129C62580B21000AA14CF /* Models */,
+				301129BE2580B1AC00AA14CF /* Auth */,
+				301129B92580B12500AA14CF /* Utils */,
+				301129B42580075200AA14CF /* SharedComponents */,
 				30166D77257FEDF80096D9A0 /* ClubsXposAppApp.swift */,
-				30166D79257FEDF80096D9A0 /* ContentView.swift */,
 				30166D7B257FEDFC0096D9A0 /* Assets.xcassets */,
 				30166D80257FEDFC0096D9A0 /* Info.plist */,
 				30166D7D257FEDFC0096D9A0 /* Preview Content */,
@@ -138,8 +185,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30166D7A257FEDF80096D9A0 /* ContentView.swift in Sources */,
+				301129CA2580BC8600AA14CF /* SettingsView.swift in Sources */,
 				30166D78257FEDF80096D9A0 /* ClubsXposAppApp.swift in Sources */,
+				301129C02580B1D300AA14CF /* UserDetailsViewModel.swift in Sources */,
+				301129C42580B20A00AA14CF /* UserDetails.swift in Sources */,
+				30166D8A257FEF6D0096D9A0 /* LoginPageView.swift in Sources */,
+				301129B62580077D00AA14CF /* CustomTextField.swift in Sources */,
+				301129BB2580B13D00AA14CF /* ActivityIndicatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

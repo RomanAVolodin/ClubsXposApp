@@ -11,7 +11,13 @@ import SwiftUI
 struct ClubsXposAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginPageView()
         }
+    }
+}
+
+struct ClubsXposAppApp_Previews: PreviewProvider {
+    static var previews: some View {
+        Text("Hello, World!")
     }
 }
