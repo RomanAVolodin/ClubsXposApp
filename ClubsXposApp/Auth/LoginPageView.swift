@@ -8,16 +8,14 @@
 import SwiftUI
 
 struct LoginPageView: View {
-    @Binding var signInSuccess: Bool
-    
     @State private var login: String = ""
     @State private var password: String = ""
     @State private var settingsPassword: String = ""
     @State private var isSettingsShown: Bool = false
     @State private var isPasswordForSettingsShown: Bool = false
-    
-    
+
     @ObservedObject var vm = UserDetailsViewModel()
+    @EnvironmentObject var environment: EnvironmentModel
     
     var body: some View {
         NavigationView {
@@ -95,10 +93,10 @@ struct LoginPageView: View {
     }
     
     private func logInToSystem() {
-        vm.login(username: login, password: password, hardwareId: UserDetails.hardwareID()) {
-            if UserDetails.currentUser() != nil {
-                signInSuccess = true
-            }
+        vm.login(username: login, password: password, hardwareId: UserDetails.hardwareID()) { (user: UserDetails, isLoggedIn: Bool) in
+            environment.user = user
+            environment.isLoggedIn = isLoggedIn
+            environment.terminalId = UserDetails.hardwareID()
         }
     }
 }

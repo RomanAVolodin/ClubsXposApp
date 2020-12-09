@@ -8,23 +8,21 @@
 import SwiftUI
 
 struct AppContentView: View {
-    
-    @State var signInSuccess = false
+
+    @EnvironmentObject var environment: EnvironmentModel
     
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [
-            .foregroundColor: UIColor.lightText
+            .foregroundColor: UIColor(white: 0.3, alpha: 1)
         ]
     }
     
     var body: some View {
-        return Group {
-            if signInSuccess {
-                HallsListView(signInSuccess: $signInSuccess)
-            }
-            else {
-                LoginPageView(signInSuccess: $signInSuccess)
-            }
+        if let userId = environment.user?.id {
+            HallsListView(userId: userId)
+        }
+        else {
+            LoginPageView()
         }
     }
 }

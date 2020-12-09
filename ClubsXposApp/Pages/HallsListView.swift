@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct HallsListView: View {
-    @Binding var signInSuccess: Bool
+    @EnvironmentObject var environment: EnvironmentModel
+    
+    @ObservedObject var vm = HallsListViewModel()
+    
+    init(userId: Int) {
+        self.vm.load(forUserWithId: userId)
+    }
     
     var body: some View {
         NavigationView {
@@ -17,33 +23,85 @@ struct HallsListView: View {
                      .ignoresSafeArea()
                 
                 ScrollView {
-                    HStack {
-                        Spacer()
-                        Text("Halls list View")
-                        Spacer()
+                    ForEach(vm.halls) { hall in
+                        HStack {
+                            Spacer()
+                            Text(hall.name)
+                            Spacer()
+                        }
+                            .padding()
+                            .asTile()
                     }
-                        .padding()
-                        .asTile()
+                  
                 }
                 .padding()
             }
-            .navigationBarTitle("Welcome")
+            .navigationBarTitle("\(environment.user?.username ?? ""). \(environment.user?.hardware_name ?? "")", displayMode: .inline)
             .navigationBarItems(trailing:
                                     Button(action: {
                                         UserDetails.clearCurrentUser()
-                                        signInSuccess = false
+                                        environment.user = nil
                                     }, label: {
                                         Image(systemName: "person.crop.circle.badge.xmark")
                                         Text("Выход")
                                     })
-                                    .foregroundColor(Color(.darkGray))
+                                    .foregroundColor(Color(.purple))
             )
         }
     }
 }
 
-struct HallsListView_Previews: PreviewProvider {
-    static var previews: some View {
-        AppContentView()
+class HallsListViewModel: ObservableObject {
+    @Published var halls = [Hall]()
+    @Published var isLoading = false
+    @Published var errorMessage = "" {
+        didSet {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                self.errorMessage = ""
+            }
+        }
     }
+    
+    func load(forUserWithId: Int) {
+        self.isLoading = true
+        
+        let urlBase = UserDefaults.standard.string(forKey: "serverIP") ?? ""
+        let urlString = "http://\(urlBase)/halls?user_id=\(forUserWithId)"
+        
+        guard let url = URL(string: urlString) else {
+            self.isLoading = false
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "GET"
+        
+        print(urlString)
+        
+        URLSession.shared.dataTask(with: request) { (data, resp, err) in
+            
+            DispatchQueue.main.async {
+                if let statusCode = (resp as? HTTPURLResponse)?.statusCode, statusCode >= 400 {
+                    self.isLoading = false
+                    self.errorMessage = "Ошибка сети: \(statusCode)"
+                    return
+                }
+                
+                guard let data = data else { return }
+                
+                do {
+                    self.halls = try JSONDecoder().decode([Hall].self, from: data)
+                } catch {
+                    print("Failed to decode JSON", error)
+                    self.errorMessage = error.localizedDescription
+                }
+                
+                self.isLoading = false
+            }
+            
+        }.resume()
+        
+    }
+    
 }

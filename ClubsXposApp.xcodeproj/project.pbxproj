@@ -22,6 +22,8 @@
 		C103C6AD2580DE0E0075DF1B /* TileModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C103C6AC2580DE0E0075DF1B /* TileModifier.swift */; };
 		C103C6B02580E2EF0075DF1B /* AppContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C103C6AF2580E2EF0075DF1B /* AppContentView.swift */; };
 		C103C6C72580EDCA0075DF1B /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = C103C6C62580EDCA0075DF1B /* Auth.swift */; };
+		C103C6CA258171210075DF1B /* EnvironmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C103C6C9258171210075DF1B /* EnvironmentModel.swift */; };
+		C1E6E59E25817D9D00A5F16A /* Hall.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E6E59D25817D9D00A5F16A /* Hall.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		C103C6AC2580DE0E0075DF1B /* TileModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileModifier.swift; sourceTree = "<group>"; };
 		C103C6AF2580E2EF0075DF1B /* AppContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContentView.swift; sourceTree = "<group>"; };
 		C103C6C62580EDCA0075DF1B /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		C103C6C9258171210075DF1B /* EnvironmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentModel.swift; sourceTree = "<group>"; };
+		C1E6E59D25817D9D00A5F16A /* Hall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hall.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,7 @@
 				C103C6A12580CCB90075DF1B /* NetworkErrorView.swift */,
 				C103C6A42580D6B80075DF1B /* Extensions.swift */,
 				C103C6AC2580DE0E0075DF1B /* TileModifier.swift */,
+				C103C6C9258171210075DF1B /* EnvironmentModel.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -89,6 +94,7 @@
 			children = (
 				301129C32580B20A00AA14CF /* UserDetails.swift */,
 				C103C6C62580EDCA0075DF1B /* Auth.swift */,
+				C1E6E59D25817D9D00A5F16A /* Hall.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -214,6 +220,7 @@
 				C103C6C72580EDCA0075DF1B /* Auth.swift in Sources */,
 				C103C6A22580CCB90075DF1B /* NetworkErrorView.swift in Sources */,
 				C103C6AD2580DE0E0075DF1B /* TileModifier.swift in Sources */,
+				C103C6CA258171210075DF1B /* EnvironmentModel.swift in Sources */,
 				C103C6A92580DB5E0075DF1B /* HallsListView.swift in Sources */,
 				C103C6A52580D6B80075DF1B /* Extensions.swift in Sources */,
 				301129CA2580BC8600AA14CF /* SettingsView.swift in Sources */,
@@ -221,6 +228,7 @@
 				C103C6B02580E2EF0075DF1B /* AppContentView.swift in Sources */,
 				301129C02580B1D300AA14CF /* UserDetailsViewModel.swift in Sources */,
 				301129C42580B20A00AA14CF /* UserDetails.swift in Sources */,
+				C1E6E59E25817D9D00A5F16A /* Hall.swift in Sources */,
 				30166D8A257FEF6D0096D9A0 /* LoginPageView.swift in Sources */,
 				301129B62580077D00AA14CF /* CustomTextField.swift in Sources */,
 				301129BB2580B13D00AA14CF /* ActivityIndicatorView.swift in Sources */,

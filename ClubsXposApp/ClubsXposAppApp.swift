@@ -12,13 +12,13 @@ struct ClubsXposAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            AppContentView()
+            AppContentView().environmentObject(EnvironmentModel())
         }
     }
 }
 
 struct ClubsXposAppApp_Previews: PreviewProvider {
     static var previews: some View {
-        AppContentView()
+        AppContentView().environmentObject(EnvironmentModel())
     }
 }

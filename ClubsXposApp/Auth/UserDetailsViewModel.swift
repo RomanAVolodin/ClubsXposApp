@@ -9,9 +9,7 @@ import SwiftUI
 
 
 class UserDetailsViewModel: ObservableObject {
-    
     @Published var isLoading = false
-    @Published var user: UserDetails?
     @Published var errorMessage = "" {
         didSet {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
@@ -20,7 +18,7 @@ class UserDetailsViewModel: ObservableObject {
         }
     }
     
-    func login(username: String, password: String, hardwareId: String, complete: @escaping () -> Void) {
+    func login(username: String, password: String, hardwareId: String, complete: @escaping (UserDetails, Bool) -> Void) {
         
         self.isLoading = true
         
@@ -49,19 +47,18 @@ class UserDetailsViewModel: ObservableObject {
                 
                 guard let data = data else { return }
                 
-                print(data)
-                
                 do {
-                    self.user = try JSONDecoder().decode(UserDetails.self, from: data)
-                    try UserDefaults.standard.setObject(self.user, forKey: "currentUser")
+                    let user = try JSONDecoder().decode(UserDetails.self, from: data)
+                    let isLoggedIn = true
+                    
+                    complete(user, isLoggedIn)
+                    
                 } catch {
                     print("Failed to decode JSON", error)
                     self.errorMessage = error.localizedDescription
                 }
                 
                 self.isLoading = false
-                
-                complete()
             }
             
         }.resume()
