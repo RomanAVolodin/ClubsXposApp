@@ -24,6 +24,9 @@
 		C103C6C72580EDCA0075DF1B /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = C103C6C62580EDCA0075DF1B /* Auth.swift */; };
 		C103C6CA258171210075DF1B /* EnvironmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C103C6C9258171210075DF1B /* EnvironmentModel.swift */; };
 		C1E6E59E25817D9D00A5F16A /* Hall.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E6E59D25817D9D00A5F16A /* Hall.swift */; };
+		C1E6E5A1258214BB00A5F16A /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E6E5A0258214BB00A5F16A /* Table.swift */; };
+		C1E6E5A42582159100A5F16A /* HallWithTablesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E6E5A32582159100A5F16A /* HallWithTablesView.swift */; };
+		C1E6E5A8258225BB00A5F16A /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E6E5A7258225BB00A5F16A /* TableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		C103C6C62580EDCA0075DF1B /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		C103C6C9258171210075DF1B /* EnvironmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentModel.swift; sourceTree = "<group>"; };
 		C1E6E59D25817D9D00A5F16A /* Hall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hall.swift; sourceTree = "<group>"; };
+		C1E6E5A0258214BB00A5F16A /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
+		C1E6E5A32582159100A5F16A /* HallWithTablesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallWithTablesView.swift; sourceTree = "<group>"; };
+		C1E6E5A7258225BB00A5F16A /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +101,7 @@
 				301129C32580B20A00AA14CF /* UserDetails.swift */,
 				C103C6C62580EDCA0075DF1B /* Auth.swift */,
 				C1E6E59D25817D9D00A5F16A /* Hall.swift */,
+				C1E6E5A0258214BB00A5F16A /* Table.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -143,9 +150,19 @@
 		C103C6A72580DB470075DF1B /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				C1E6E5A6258225A800A5F16A /* Table */,
 				C103C6A82580DB5E0075DF1B /* HallsListView.swift */,
+				C1E6E5A32582159100A5F16A /* HallWithTablesView.swift */,
 			);
 			path = Pages;
+			sourceTree = "<group>";
+		};
+		C1E6E5A6258225A800A5F16A /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				C1E6E5A7258225BB00A5F16A /* TableView.swift */,
+			);
+			path = Table;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,8 +247,11 @@
 				301129C42580B20A00AA14CF /* UserDetails.swift in Sources */,
 				C1E6E59E25817D9D00A5F16A /* Hall.swift in Sources */,
 				30166D8A257FEF6D0096D9A0 /* LoginPageView.swift in Sources */,
+				C1E6E5A8258225BB00A5F16A /* TableView.swift in Sources */,
 				301129B62580077D00AA14CF /* CustomTextField.swift in Sources */,
+				C1E6E5A1258214BB00A5F16A /* Table.swift in Sources */,
 				301129BB2580B13D00AA14CF /* ActivityIndicatorView.swift in Sources */,
+				C1E6E5A42582159100A5F16A /* HallWithTablesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

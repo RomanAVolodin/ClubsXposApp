@@ -24,19 +24,26 @@ struct HallsListView: View {
                 
                 ScrollView {
                     ForEach(vm.halls) { hall in
-                        HStack {
-                            Spacer()
-                            Text(hall.name)
-                            Spacer()
-                        }
-                            .padding()
-                            .asTile()
+                        NavigationLink(
+                            destination: NavigationLazyView(HallWithTablesView(hall: hall, userId: environment.user?.id ?? 0)),
+                            label: {
+                                HStack {
+                                    Spacer()
+                                    Text(hall.name)
+                                    Spacer()
+                                }
+                                    .padding()
+                                    .background(Color(#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)))
+                                    .foregroundColor(.white)
+                                    .asTile()
+                            })
+                        
                     }
                   
                 }
                 .padding()
             }
-            .navigationBarTitle("\(environment.user?.username ?? ""). \(environment.user?.hardware_name ?? "")", displayMode: .inline)
+            .navigationBarTitle("Залы, \(environment.user?.username ?? ""), \(environment.user?.hardware_name ?? "")", displayMode: .inline)
             .navigationBarItems(trailing:
                                     Button(action: {
                                         UserDetails.clearCurrentUser()
@@ -47,7 +54,7 @@ struct HallsListView: View {
                                     })
                                     .foregroundColor(Color(.purple))
             )
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

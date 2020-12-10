@@ -7,6 +7,16 @@
 
 import SwiftUI
 
+struct NavigationLazyView<Content: View>: View {
+    let build: () -> Content
+    init(_ build: @autoclosure @escaping () -> Content) {
+        self.build = build
+    }
+    var body: Content {
+        build()
+    }
+}
+
 protocol ObjectSavable {
     func setObject<Object>(_ object: Object, forKey: String) throws where Object: Encodable
     func getObject<Object>(forKey: String, castTo type: Object.Type) throws -> Object where Object: Decodable

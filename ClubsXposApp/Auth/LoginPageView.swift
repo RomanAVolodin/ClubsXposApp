@@ -89,7 +89,7 @@ struct LoginPageView: View {
                 }
             
             }.navigationTitle("Xpos clubs")
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
     
     private func logInToSystem() {
