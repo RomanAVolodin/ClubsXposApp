@@ -39,13 +39,21 @@ class UserDetailsViewModel: ObservableObject {
         URLSession.shared.dataTask(with: request) { (data, resp, err) in
             
             DispatchQueue.main.async {
+                self.isLoading = false
+                if let err = err {
+                    self.errorMessage = "Ошибка сети: \(err.localizedDescription)"
+                    return
+                }
+                
                 if let statusCode = (resp as? HTTPURLResponse)?.statusCode, statusCode >= 400 {
-                    self.isLoading = false
                     self.errorMessage = "Ошибка сети: \(statusCode)"
                     return
                 }
                 
-                guard let data = data else { return }
+                guard let data = data else {
+                    self.errorMessage = "Проверьте соединение"
+                    return
+                }
                 
                 do {
                     let user = try JSONDecoder().decode(UserDetails.self, from: data)
@@ -57,8 +65,7 @@ class UserDetailsViewModel: ObservableObject {
                     print("Failed to decode JSON", error)
                     self.errorMessage = error.localizedDescription
                 }
-                
-                self.isLoading = false
+
             }
             
         }.resume()
