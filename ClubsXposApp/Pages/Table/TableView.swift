@@ -23,7 +23,11 @@ struct TableView: View {
             Divider()
             
             ForEach(table.bills) { bill in
-                BillInTableView(bill: bill)
+                NavigationLink(
+                    destination: Text("Destination \(bill.number)"),
+                    label: {
+                        BillInTableView(bill: bill)
+                    })
                     .asTile()
             }
             
@@ -72,22 +76,42 @@ struct BillInTableView: View {
             }
             .padding(.leading, 8)
             
-            Text(bill.personalName ?? "")
-                .font(.system(size: 14, weight: .regular))
-                .padding(8)
-            
+            VStack(alignment: .leading) {
+                Text("Официантка")
+                    .font(.system(size: 12, weight: .light))
+                Text(bill.personalName ?? "")
+                    .font(.system(size: 14, weight: .regular))
+            }.padding(8)
+        
             HStack {
+
                 Image("waiter")
                     .resizable()
                     .frame(width: 64, height: 80)
                     .scaledToFit()
                 Spacer()
-                Text(bill.clientsName ?? "")
-                    .font(.system(size: 14, weight: .semibold))
-                    .foregroundColor(.red)
-                    .padding(8)
-                Spacer()
+            
+                
+                HStack {
+                    Spacer()
+                    VStack(alignment: .trailing) {
+                        Text(bill.clientsName ?? "")
+                            .font(.system(size: 14, weight: .semibold))
+                            .foregroundColor(.red)
+                            .padding(8)
+                        Text("Сумма заказа: \(bill.total ?? "")")
+                        HStack {
+                            Text("К оплате: ")
+                            Text(bill.total_payment ?? "")
+                                .font(.system(size: 11, weight: .semibold))
+                        }
+                    
+                    }
+                }
+                .font(.system(size: 11, weight: .light, design: .rounded))
+                .padding(.horizontal, 8)
             }
+            
         }
         .padding(.top, 8)
         .background(bill.editingHardwareID == 0 ? Color(#colorLiteral(red: 0.7588848472, green: 0.8678822517, blue: 0.9461668134, alpha: 1)) : Color(#colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 0.7894476232)))

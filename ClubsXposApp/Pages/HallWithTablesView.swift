@@ -9,14 +9,16 @@ import SwiftUI
 
 struct HallWithTablesView: View {
     let hall: Hall
+    let userId: Int
     
     @EnvironmentObject var environment: EnvironmentModel
     @ObservedObject var vm: HallsWithTablesViewModel
     
     init(hall: Hall, userId: Int) {
         self.hall = hall
+        self.userId = userId
         self.vm = HallsWithTablesViewModel()
-        self.vm.load(forUserWithId: userId, andHallId: hall.id)
+//        self.vm.load(forUserWithId: userId, andHallId: hall.id)
     }
     var body: some View {
         ZStack {
@@ -32,6 +34,9 @@ struct HallWithTablesView: View {
         .navigationTitle(hall.name)
         .onDisappear {
             self.vm.gameTimer?.invalidate()
+        }
+        .onAppear {
+            self.vm.load(forUserWithId: self.userId, andHallId: self.hall.id)
         }
     }
 }
@@ -95,7 +100,10 @@ class HallsWithTablesViewModel: ObservableObject {
         gameTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
             self.fetchTablesFromServer(request, urlString)
         })
+    }
     
+    func startTimer() {
+        
     }
 }
 
